@@ -37,7 +37,7 @@
 	<!-- //title -->
 	<!-- content -->
 	<div class="sub-main-w3">
-		<form id="demo" novalidate action="#" method="post">
+		<form id="demo" action="www.php" method="post">
 			<h2>Masukan NIK dan Password</h2>
 			<div class="form-group">
 				<input type="NIK" class="form-control textbox" name="NIK" placeholder="NIK" required="">
@@ -45,13 +45,24 @@
 			<div class="form-group">
 				<input type="password" class="form-control textbox" name="password" placeholder="Password" required="">
 			</div>
-			<div class="form-group-2">
-				<button class="btn btn-default btn-osx btn-lg" disabled type="submit">
-					<i class="fas fa-long-arrow-alt-right"></i>
-					<form action="../pages/login_process.php" method="post">
-				</button>
+			<div class="form-group">
+			Pilih Loket
+			<?php
+
+			$con = mysqli_connect("localhost","root","","antrian_grapari");
+
+			$sql = "SELECT no_loket FROM loket where status_loket IS NULL";
+			$result = mysqli_query($con, $sql);
+
+			echo "<select name='username'>";
+			while ($row = mysqli_fetch_array($result)) {
+			    echo "<option value='" . $row['no_loket'] ."'>" . $row['no_loket'] ."</option>";
+			}
+			echo "</select>";
+			?>
+
 			</div>
-			<div class="alert alert-success hidden" role="alert">You Have Successfully Logged In</div>
+				<input type="submit" name="submit">
 		</form>
 		<!-- //switch -->
 	</div>
