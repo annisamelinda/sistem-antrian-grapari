@@ -19,7 +19,7 @@ echo "CL"."-"."";*/
 
 if(isset($_POST["submit"]))
 {
-
+	ini_set('date.timezone', 'Asia/Jakarta');
 	$jenis_pelayanan = $_POST['jenis_pelayanan'];
 	$no_telp = $_POST['no_telp'];
 	$nama = $_POST['nama'];
@@ -119,6 +119,7 @@ if(isset($_POST["submit"]))
 									echo "Nomor Antrian : ".$x."<br>";
 									echo "Loket : ".$x."<br>";
 									echo "Tanggal Antrian : ".$current_date."<br>";
+									echo "<a href ='index.php'>Kembali ke halaman utama</a>";
 						}
 
 						else
@@ -174,7 +175,7 @@ if(isset($_POST["submit"]))
 									echo "Nomor Antrian : ".$nomor_antrian_baru."<br>";
 									echo "Loket : ".$y."<br>";
 									echo "Tanggal Antrian : ".$current_date."<br>";
-
+									echo "<a href ='index.php'>Kembali ke halaman utama</a>";
 
 								}
 
@@ -216,7 +217,7 @@ if(isset($_POST["submit"]))
 									echo "Nomor Antrian : ".$nomor_antrian_baru."<br>";
 									echo "Loket : ".$result."<br>";
 									echo "Tanggal Antrian : ".$current_date."<br>";
-
+									echo "<a href ='index.php'>Kembali ke halaman utama</a>";
 								}
 
 					}
