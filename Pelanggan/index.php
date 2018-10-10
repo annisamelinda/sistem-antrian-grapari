@@ -82,7 +82,7 @@ if($weekendDay)
 
 else
 {
-		if($time>'17:06' ||  $time<'08:00')
+		if($time>'24:06' ||  $time<'08:00')
 		{
 				echo  '<h3 align="center"> Mohon maaf, diluar jam operasi </h3>';
 		}

@@ -65,7 +65,7 @@ input[type=submit]:hover {
 
             $con = mysqli_connect("localhost","root","","antrian_grapari");
 
-            $sql = "SELECT no_loket FROM pelayanan_loket where status_loket IS NULL";
+            $sql = "SELECT no_loket FROM pelayanan_loket where status_loket = 0 OR status_loket IS NULL";
             $result = mysqli_query($con, $sql);
 
             echo "<select id='country' name='no_loket'>";

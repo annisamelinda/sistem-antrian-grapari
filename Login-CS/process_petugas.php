@@ -12,6 +12,10 @@ if(isset($_POST["submit"]))
 {
 
 
+ini_set('date.timezone', 'Asia/Jakarta');
+
+$time_set = date("Y-m-d H:i");
+
 	$NIK = $_POST['NIK'];
 	$nama = $_POST['nama'];
 	$no_loket = $_POST['no_loket'];
@@ -30,17 +34,16 @@ if(isset($_POST["submit"]))
 	 
 	if($cek > 0)
 	{
-		$query =  "select NIK,nama,password from petugas where NIK='$NIK'";
+		$query =  "select NIK,nama from petugas where NIK='$NIK'";
 		$sql = mysqli_query ($con, $query);
 		while ($hasil = mysqli_fetch_array ($sql)) 
 		{
 		$NIK = $hasil['NIK'];
 		$nama = stripslashes ($hasil['nama']);
-		$password = stripslashes ($hasil['password']);
+
 		}
 		$_SESSION['NIK'] = $NIK;
 		$_SESSION['nama'] = $nama;
-		$_SESSION['password'] = $password;
 		/*$_SESSION['agama'] = $agama;
 		$_SESSION['alamat'] = $alamat;
 		$_SESSION['jenis_kelamin'] = $jenis_kelamin;
@@ -48,7 +51,7 @@ if(isset($_POST["submit"]))
 		$_SESSION['golongan_darah'] = $golongan_darah;
 		$_SESSION['tinggi_badan'] = $tinggi_badan;*/
 		$_SESSION['status_account'] = "login";
-		$query_cs = mysqli_query($con, "update pelayanan_loket set status_loket = 1, NIK='$NIK' where no_loket='$no_loket'");
+		$query_cs = mysqli_query($con, "update pelayanan_loket set status_loket = 1, access_time='$time_set', NIK='$NIK' where no_loket='$no_loket'");
 		header("location:dashboard.php");
 	}
 	
