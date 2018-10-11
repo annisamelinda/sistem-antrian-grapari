@@ -34,25 +34,40 @@ $time_set = date("Y-m-d H:i");
 	 
 	if($cek > 0)
 	{
-		$query =  "select NIK,nama from petugas where NIK='$NIK'";
-		$sql = mysqli_query ($con, $query);
-		while ($hasil = mysqli_fetch_array ($sql)) 
-		{
-		$NIK = $hasil['NIK'];
-		$nama = stripslashes ($hasil['nama']);
 
+
+	$cek_tugas = mysqli_query($con, "SELECT *from pelayanan_loket where NIK='$NIK' AND status_loket='1'");
+	$cek_tugas_exec = mysqli_num_rows($cek_tugas);
+
+		if($cek_tugas_exec>0)
+		{
+			    echo "Silahkan logout dari Loket anda sebelumnya";
+				header("refresh:1.5;index.php");
 		}
-		$_SESSION['NIK'] = $NIK;
-		$_SESSION['nama'] = $nama;
-		/*$_SESSION['agama'] = $agama;
-		$_SESSION['alamat'] = $alamat;
-		$_SESSION['jenis_kelamin'] = $jenis_kelamin;
-		$_SESSION['status'] = $status;
-		$_SESSION['golongan_darah'] = $golongan_darah;
-		$_SESSION['tinggi_badan'] = $tinggi_badan;*/
-		$_SESSION['status_account'] = "login";
-		$query_cs = mysqli_query($con, "update pelayanan_loket set status_loket = 1, access_time='$time_set', NIK='$NIK' where no_loket='$no_loket'");
-		header("location:dashboard.php");
+
+		else
+		{
+			$query =  "select NIK,nama from petugas where NIK='$NIK'";
+			$sql = mysqli_query ($con, $query);
+			while ($hasil = mysqli_fetch_array ($sql)) 
+			{
+			$NIK = $hasil['NIK'];
+			$nama = stripslashes ($hasil['nama']);
+
+			}
+			$_SESSION['NIK'] = $NIK;
+			$_SESSION['nama'] = $nama;
+			/*$_SESSION['agama'] = $agama;
+			$_SESSION['alamat'] = $alamat;
+			$_SESSION['jenis_kelamin'] = $jenis_kelamin;
+			$_SESSION['status'] = $status;
+			$_SESSION['golongan_darah'] = $golongan_darah;
+			$_SESSION['tinggi_badan'] = $tinggi_badan;*/
+			$_SESSION['status_account'] = "login";
+			$query_cs = mysqli_query($con, "update pelayanan_loket set status_loket = 1, access_time='$time_set', NIK='$NIK' where no_loket='$no_loket'");
+			header("location:dashboard.php");		
+		}
+
 	}
 	
 	else

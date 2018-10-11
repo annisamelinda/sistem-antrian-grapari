@@ -79,17 +79,34 @@ $hasil_antrian=mysqli_query($con, $queri_antrian);
 while ($data = mysqli_fetch_array ($hasil_antrian))
 {
 //$id_pemesanan = $data['id_pemesanan'];
-echo "    
+echo '    
         <tr>
-        <td>".$data['nomor_antrian']."</td>
-        <td>".$data['nomor_register']."</td>
-        <td>".$data['status_antrian']."</td>
-        <td><a href='proses_status.php'>Proses</td>
-        </tr> 
-        ";     
+        <td>'.$data['nomor_antrian'].'</td>
+        <td>'.$data['nomor_register'].'</td>
+        <td>'.$data['status_antrian'].'</td>';
+
+        if($data['status_antrian']=='diproses')
+        {
+			echo '<td><a href=process_status.php?nomor_register='.$data['nomor_register'].'>Proses</a></td>
+        </tr>';        	
+        }
+
+        elseif ($data['status_antrian']=='selesai') 
+        {
+        echo '<td>Selesai</td>
+        </tr>';
+        }   
+
+        else
+        {
+			echo '<td><a href=process_status.php?nomor_register='.$data['nomor_register'].'>Proses</a></td>
+        </tr>';        	
+        }
 }
+
 mysqli_free_result($hasil_antrian);
 ?>
+
          </table>
 </body>
 </html>
