@@ -63,6 +63,33 @@ th, td {
 	?>
 
 <h1>List Antrian Loket Anda : </h1>
+
+<p align="center"><table align="center" width="50">
+	<tr align="center">
+		<td align="center">
+
+		<?php
+
+			$begin_antrian = mysqli_query($con, "SELECT *from antrian where status_antrian='diproses'");
+	 
+			// menghitung jumlah data yang ditemukan
+			$cek = mysqli_num_rows($query);
+			 
+			if($cek > 0)
+			{
+				echo "<a href='process_antrian.php?antrian=next'>Next Antrian</a></td>";
+			}
+
+			else
+			{
+				echo "<a href='process_antrian.php?antrian=proses'>Mulai Proses Antrian</a></td>";
+			}
+
+		?>
+	</tr>
+	
+</table></p> <br>
+
          <table width="100%">
                                     <tr>
                                         <th>Nomor Antrian</th>

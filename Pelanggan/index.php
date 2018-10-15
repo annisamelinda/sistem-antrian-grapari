@@ -98,7 +98,7 @@ else
 						 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
 						      <div class="check w3"></div>
 						 </li>
-						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good" checked="checked"> 
+						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good"> 
 							  <label for="good"> Deaktivasi Kartu Halo </label>
 						      <div class="check w3ls"></div>
 						 </li>
