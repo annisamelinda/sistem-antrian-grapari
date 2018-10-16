@@ -25,28 +25,99 @@ require('check_date.php');
 <body class="agileits_w3layouts">
     <h1 class="agile_head text-center">FORM PENDAFTARAN PELAYANAN SIMCARD </h1>
     <div class="w3layouts_main wrap">
-	  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
-	    <form action="process.php" method="post" class="agile_form">
-		  <h2>Jenis Pelayanan Simcard </h2>
-			 <ul class="agile_info_select">
-				 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
-				 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
-				      <div class="check w3"></div>
-				 </li>
-				 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good" checked="checked"> 
-					  <label for="good"> Deaktivasi Kartu Halo </label>
-				      <div class="check w3ls"></div>
-				 </li>
-				 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral"> 
-					 <label for="neutral">Aktivasi Prabayar Baru </label>
-				     <div class="check wthree"></div>
-				 </li>
-			 </ul>	  
-			<h2>Masukan Nama dan Nomor Handphone </h2>
-			<input type="text" placeholder="Nama" name="nama" required="" />
-			<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
-			<input type="submit" name="submit" value="Daftar" class="agileinfo" />
-	  </form>
+
+<?php
+
+
+ini_set('date.timezone', 'Asia/Jakarta');
+$time=date('H:i');
+$date = date("Y-m-d");
+//Set this to FALSE until proven otherwise.
+$weekendDay = false;
+ 
+//Get the day that this particular date falls on.
+$day = date("D", strtotime($date));
+//echo 'Indonesian Timezone: ' .$time; 
+if($day == 'Sat' || $day == 'Sun'){
+    //Set our $weekendDay variable to TRUE.
+    $weekendDay = true;
+}
+
+if($weekendDay)
+{
+		if($time>'11:00' AND $time<'08:00')
+		{
+				echo  '<h3 align="center"> Mohon maaf, diluar jam operasi </h3>';
+		}
+
+		else
+		{
+		echo '
+			  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
+			    <form action="process.php" method="post" class="agile_form">
+				  <h2>Jenis Pelayanan Simcard </h2>
+					 <ul class="agile_info_select">
+						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
+						 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
+						      <div class="check w3"></div>
+						 </li>
+						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good" checked="checked"> 
+							  <label for="good"> Deaktivasi Kartu Halo </label>
+						      <div class="check w3ls"></div>
+						 </li>
+						 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral"> 
+							 <label for="neutral">Aktivasi Prabayar Baru </label>
+						     <div class="check wthree"></div>
+						 </li>
+					 </ul>	  
+					<h2>Masukan Nama dan Nomor Handphone </h2>
+					<input type="text" placeholder="Nama" name="nama" required="" />
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
+					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
+			  </form>
+		';
+
+		}
+} 
+
+else
+{
+		if($time>'23:00' ||  $time<'08:00')
+		{
+				echo  '<h3 align="center"> Mohon maaf, diluar jam operasi </h3>';
+		}
+
+		else
+		{
+		echo '
+			  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
+			    <form action="process.php" method="post" class="agile_form">
+				  <h2>Jenis Pelayanan Simcard </h2>
+					 <ul class="agile_info_select">
+						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
+						 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
+						      <div class="check w3"></div>
+						 </li>
+						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good"> 
+							  <label for="good"> Deaktivasi Kartu Halo </label>
+						      <div class="check w3ls"></div>
+						 </li>
+						 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral"> 
+							 <label for="neutral">Aktivasi Prabayar Baru </label>
+						     <div class="check wthree"></div>
+						 </li>
+					 </ul>	  
+					<h2>Masukan Nama dan Nomor Handphone </h2>
+					<input type="text" placeholder="Nama" name="nama" required="" />
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
+					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
+			  </form>
+		';
+
+		}
+}
+
+?>
 	</div>
 	<div class="agileits_copyright text-center">
 			<p>&nbsp;</p>
