@@ -74,6 +74,13 @@ th, td {
 
 			$cek_semua_selesai = mysqli_num_rows($cek_selesai);
 
+			$row_row_old=mysqli_fetch_assoc($cek_selesai);
+				
+						// Free result set
+			mysqli_free_result($cek_selesai);
+		
+			$cek_exist_antrian_old = $row_row_old["nomor_antrian"];
+
 			$cek_cek = mysqli_query($con, "SELECT nomor_antrian from antrian where status_antrian='menunggu' AND no_loket='$tag_loket' LIMIT 1");
 
 					// Associative array
@@ -84,7 +91,18 @@ th, td {
 		
 			$cek_exist_antrian = $row_row["nomor_antrian"];
 
-			echo "Antrian selanjutnya yang akan diproses: ".$cek_exist_antrian."<br>";
+			echo "Antrian selanjutnya yang akan diproses: ";
+			if(!empty($cek_exist_antrian))
+			{
+				echo $cek_exist_antrian;
+			}
+
+			else
+			{
+				echo "Tidak Ada";
+			}
+
+			echo "<br>";
 
 			if($cek_semua_selesai>0)
 
@@ -98,7 +116,7 @@ th, td {
 					 
 						if($cek > 0)
 						{
-							echo "<a href='process_antrian.php?antrian=next&no_loket=$tag_loket&nomor_antrian=$cek_exist_antrian'>Next Antrian</a></td>";
+							echo "<a href='process_antrian.php?antrian=next&no_loket=$tag_loket&nomor_antrian=$cek_exist_antrian&nomor_antrian_old=$cek_exist_antrian_old'>Lanjut Proses atau Next Antrian</a></td>";
 						}
 
 						else
@@ -107,13 +125,6 @@ th, td {
 						}
 			}
 				
-			else
-				
-			{
-				echo "None";
-
-			}		
-
 		?>
 	</tr>
 	
@@ -123,14 +134,19 @@ th, td {
                                     <tr>
                                         <th>Nomor Antrian</th>
                                         <th>Nomor Register</th>
+                                        <th>Tgl Pemesanan</th>
                                         <th>Nama</th>
+                                        <th>Jenis Pelayanan</th>
+                                        <th>Jam Pesan</th>                                        
+                                        <th>Jam Selesai</th>
+                                        <th>Durasi</th>
                                         <th>No HP</th>
                                         <th>Status</th>
                                         <!--<th>Aksi</th>-->
                                     </tr>
 <?php  
 
-$queri_antrian="SELECT pl.id_customer, nama, no_telp, nomor_antrian, nomor_register, status_antrian FROM customer pl JOIN antrian pn ON pl.id_customer = pn.id_customer where no_loket = '$tag_loket'"; 
+$queri_antrian="SELECT pl.id_customer, nama, jenis_pelayanan, jam_order, jam_selesai, durasi, tanggal_order, no_telp, nomor_antrian, nomor_register, status_antrian FROM customer pl JOIN antrian pn ON pl.id_customer = pn.id_customer where no_loket = '$tag_loket'"; 
 
 $hasil_antrian=mysqli_query($con, $queri_antrian);   
 
@@ -141,7 +157,12 @@ echo '
         <tr>
         <td>'.$data['nomor_antrian'].'</td>
         <td>'.$data['nomor_register'].'</td>
+        <td>'.$data['tanggal_order'].'</td>
         <td>'.$data['nama'].'</td>
+        <td>'.$data['jenis_pelayanan'].'</td>
+        <td>'.$data['jam_order'].'</td>
+        <td>'.$data['jam_selesai'].'</td>
+        <td>'.$data['durasi'].'</td>
         <td>'.$data['no_telp'].'</td>
         <td>'.$data['status_antrian'].'</td>';
 

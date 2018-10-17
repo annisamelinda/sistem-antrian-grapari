@@ -8,6 +8,13 @@ ini_set('display_errors', 0);
 
 require 'db.php'; 
 // menangkap data yang dikirim dari form
+
+ini_set('date.timezone', 'Asia/Jakarta');
+
+$waktu_akhir = date("H:i:s");
+$akhir  = strtotime($waktu_akhir);
+//$awal = strtotime($waktu_akhir);
+
 if(isset($_GET["antrian"]) AND isset($_GET["no_loket"]))
 {
 
@@ -15,9 +22,32 @@ $get_loket = $_GET["no_loket"];
 
 $get_nomor_antrian_terbaru = $_GET["nomor_antrian"];
 
+$get_nomor_antrian_terbaru_old = $_GET["nomor_antrian_old"];
+
 $status_next = 'next';
 
 $status_mulai_proses = 'proses';
+
+
+$sql_jam_order="SELECT jam_order FROM antrian where nomor_antrian ='$get_nomor_antrian_terbaru_old'";
+
+$result_jam_order=mysqli_query($con,$sql_jam_order);
+
+// Associative array
+$row_jam_order=mysqli_fetch_assoc($result_jam_order);
+		
+// Free result set
+mysqli_free_result($result_jam_order);
+
+$jam_order_pertama = $row_jam_order["jam_order"];
+
+
+$awal  = strtotime($jam_order_pertama);	
+
+$diff  = $akhir - $awal;
+$jam   = floor($diff / (60 * 60));
+$menit = $diff - $jam * (60 * 60);
+$time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 
 
 	if($_GET["antrian"]==$status_next)
@@ -27,7 +57,7 @@ $status_mulai_proses = 'proses';
 		if(!empty($get_nomor_antrian_terbaru))
 
 		{
-				$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai' where status_antrian ='diproses' AND no_loket='$get_loket'");		
+				$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");		
 
 				$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses' where nomor_antrian = '$get_nomor_antrian_terbaru' ");
 
@@ -74,7 +104,7 @@ $status_mulai_proses = 'proses';
 			else
 			{
 
-					$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai' where status_antrian ='diproses' AND no_loket='$get_loket'");
+					$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");
 
 					echo '
 
