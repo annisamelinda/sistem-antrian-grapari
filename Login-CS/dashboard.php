@@ -138,6 +138,7 @@ th, td {
                                         <th>Nama</th>
                                         <th>Jenis Pelayanan</th>
                                         <th>Jam Pesan</th>                                        
+                                        <th>Jam Diproses</th>                                        
                                         <th>Jam Selesai</th>
                                         <th>Durasi</th>
                                         <th>No HP</th>
@@ -146,7 +147,7 @@ th, td {
                                     </tr>
 <?php  
 
-$queri_antrian="SELECT pl.id_customer, nama, jenis_pelayanan, jam_order, jam_selesai, durasi, tanggal_order, no_telp, nomor_antrian, nomor_register, status_antrian FROM customer pl JOIN antrian pn ON pl.id_customer = pn.id_customer where no_loket = '$tag_loket'"; 
+$queri_antrian="SELECT pl.id_customer, nama, jenis_pelayanan, jam_order, jam_diproses, jam_selesai, durasi, tanggal_order, no_telp, nomor_antrian, nomor_register, status_antrian FROM customer pl JOIN antrian pn ON pl.id_customer = pn.id_customer where no_loket = '$tag_loket'"; 
 
 $hasil_antrian=mysqli_query($con, $queri_antrian);   
 
@@ -161,6 +162,7 @@ echo '
         <td>'.$data['nama'].'</td>
         <td>'.$data['jenis_pelayanan'].'</td>
         <td>'.$data['jam_order'].'</td>
+        <td>'.$data['jam_diproses'].'</td>
         <td>'.$data['jam_selesai'].'</td>
         <td>'.$data['durasi'].'</td>
         <td>'.$data['no_telp'].'</td>

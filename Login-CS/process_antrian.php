@@ -29,7 +29,7 @@ $status_next = 'next';
 $status_mulai_proses = 'proses';
 
 
-$sql_jam_order="SELECT jam_order FROM antrian where nomor_antrian ='$get_nomor_antrian_terbaru_old'";
+$sql_jam_order="SELECT jam_diproses FROM antrian where nomor_antrian ='$get_nomor_antrian_terbaru_old'";
 
 $result_jam_order=mysqli_query($con,$sql_jam_order);
 
@@ -39,7 +39,7 @@ $row_jam_order=mysqli_fetch_assoc($result_jam_order);
 // Free result set
 mysqli_free_result($result_jam_order);
 
-$jam_order_pertama = $row_jam_order["jam_order"];
+$jam_order_pertama = $row_jam_order["jam_diproses"];
 
 
 $awal  = strtotime($jam_order_pertama);	
@@ -142,7 +142,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 
 	{
 
-			$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses' where status_antrian ='menunggu' AND no_loket='$get_loket' limit 1 ");
+			$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses', jam_diproses='$waktu_akhir'  where status_antrian ='menunggu' AND no_loket='$get_loket' limit 1 ");
 
 			if($query_akhiran)
 			{
