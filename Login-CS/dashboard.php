@@ -5,6 +5,40 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Halaman Utama Peserta</title>
 	<script type="text/javascript" src="js/date_time.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+            function start_countdown()
+            {
+                var counter = 600;
+                myVar = setInterval(function ()
+                {
+                    if (counter >= 0)
+                    {
+                        document.getElementById("countdown").innerHTML = counter + " detik (10 Menit)";
+                    }
+                    if (counter == 0)
+                    {
+                        /*$.ajax
+                        ({
+                            type: 'post',
+                            url: 'dashboard.php?timeup=mantap',
+                            data: {
+                                logout: "logout"
+                            },
+                            success: function (response)
+                            {
+                                location.reload();
+                            }
+                        });*/
+                        location.href = 'dashboard.php?timeup=done';
+                    }
+                    counter--;
+                }, 1000)
+            }
+     </script>
+
+
 <style>
 table, td, th {    
     border: 1px solid #ddd;
@@ -59,10 +93,43 @@ th, td {
 	<span id="date_time"></span>
     <script type="text/javascript">window.onload = date_time("date_time");</script>
 	'."<br><br>";
-	echo "<a href='logout.php'>Logout</a>";
+	echo "<a href='logout.php'>Logout</a>"."<br><br>";
 	?>
+<?php
+if(isset($_GET["timeup"]))
+{
+	$value_timeup=$_GET["timeup"];
 
-<h1>List Antrian Loket Anda : </h1>
+	if($value_timeup=='next')
+	{
+		echo '<h1 align="center">Waktu untuk layanan konsultasi : </h1>';
+		echo '
+				<script>start_countdown();</script>
+				<h2 align="center" id="countdown"></h2>
+		';
+	}
+
+	elseif ($value_timeup=='done') 
+	{
+
+		echo '<h1 align="center">Waktu Habis. Silahkan next antrian berikutnya</h1>'."<br>";
+
+	}
+
+	else
+	{
+		echo '<h1 align="center">Tidak ada waktu yang berjalan</h1>'."<br>";
+	}
+}
+
+else
+{
+
+}
+
+?>
+
+<h3>List Antrian Loket Anda : </h3>
 
 <p align="center"><table align="center" width="50">
 	<tr align="center">

@@ -84,7 +84,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 								  button: "Ok!",
 								})
 								.then((value) => {
-								  window.location.href="dashboard.php";
+								  window.location.href="dashboard.php?timeup=next";
 								});
 								}
 								</script>
@@ -168,7 +168,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 							  button: "Ok!",
 							})
 							.then((value) => {
-							  window.location.href="dashboard.php";
+							  window.location.href="dashboard.php?timeup=next";
 							});
 							}
 							</script>
