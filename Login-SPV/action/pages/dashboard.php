@@ -79,7 +79,7 @@ include "session_admin.php";
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="tables.php"><i class="fa fa-table fa-fw"></i> Data Antrian</a>
+                            <a href="dashboard.php"><i class="fa fa-table fa-fw"></i> Data Antrian</a>
                         </li>
                     </ul>
                 </div>
