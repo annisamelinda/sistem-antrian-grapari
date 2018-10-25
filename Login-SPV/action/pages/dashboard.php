@@ -107,9 +107,11 @@ include "session_admin.php";
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>ID Pemesanan</th>
+                                        <th>NIK Petugas</th>
+                                        <th>ID Customer</th>
                                         <th>Tanggal Order</th>
                                         <th>Jam Order</th>
+                                        <th>Layanan</th>
                                         <th>Lihat Detail</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -127,10 +129,12 @@ while ($data = mysqli_fetch_array ($hasil_antrian))
 $no = $data['no'];
 echo "    
         <tr>
-        <td>".$data['nomor_antrian']."</td>
+        <td>".$data['NIK']."</td>
+        <td>".$data['id_customer']."</td>
         <td>".$data['tanggal_order']."</td>
         <td>".$data['jam_order']."</td>
-        <td><a href='detail_antrian.php?no=$no' target = '_blank'>Lihat Detail</a>&nbsp|<a href='report.php?no=$no' target = '_blank'> Bukti Pemesanan</a></td>
+        <td>".$data['jenis_pelayanan']."</td>
+        <td><a href='detail_antrian.php?no=$no' target = '_blank'>Lihat Detail</a></td>
         <td><a href='delete_antrian.php?no=$no' onClick='return akun()'>Delete</a></td>
         </tr> 
         ";     

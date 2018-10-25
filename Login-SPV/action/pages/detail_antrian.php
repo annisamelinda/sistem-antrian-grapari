@@ -57,7 +57,7 @@ include "session_admin.php";
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Rincian Antrian &nbsp | &nbsp <a href="edit_antrian.php?no=<?php echo $no;?>"><i class="fa fa-gear fa-gear"></i> Edit Data Antrian</a>
+                            <i class="fa fa-bell fa-fw"></i> Rincian Antrian &nbsp | &nbsp <a href="dashboard.php"><i class="fa fa-back fa-back"></i> Kembali</a>
                             </div>
                             <div class="panel-body">
                             <div class="list-group">
@@ -102,18 +102,40 @@ include "session_admin.php";
                                   }
                                   else 
                                   {
-                                        $query = "SELECT no, nomor_antrian FROM riwayat_antrian WHERE no = '$no'";
+                                        $query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE no = '$no'";
                                         $sql = mysqli_query ($mysql, $query);
                                         while ($hasil = mysqli_fetch_array ($sql)) 
                                         {
-                                            $no = $hasil['no'];
+                                            $no = $hasil['nomor_register'];
                                             $nomor_antrian = $hasil['nomor_antrian'];
+                                            $jenis_pelayanan = $hasil['jenis_pelayanan'];
+                                            $tgl = $hasil['tanggal_order'];
+                                            $id_customer = $hasil['id_customer'];
+                                            $status_antrian = $hasil['status_antrian'];
+                                            $jam_order = $hasil['jam_order'];
+                                            $jam_selesai = $hasil['jam_selesai'];
+                                            $no_loket = $hasil['no_loket'];
+                                            $NIK = $hasil['NIK'];
 
                                             echo "                                
                                             <li class='list-group-item'>
-                                            <i> - </i>No Pemesanan : $no</li>
+                                            <i> - </i>Nomor Register : $no</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Nomor Antrian : $nomor_antrian</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Jenis Layanan : $jenis_pelayanan</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Tanggal Antrian : $tgl</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Petugas : $NIK</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Status : $status_antrian</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Jam Order : $jam_order</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Jam Selesai : $jam_selesai</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>No Loket : $no_loket</li>
                                             ";
                                         }
 
