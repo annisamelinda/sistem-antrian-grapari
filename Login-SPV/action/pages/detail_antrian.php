@@ -92,7 +92,7 @@ include "session_admin.php";
 
                                 include 'db.php';
 
-                                $queri="select * from riwayat_antrian where no = '$no'"; 
+                                $queri="select * from riwayat_antrian where nomor_register = '$no'"; 
 
                                 $hasil=mysqli_query($mysql, $queri);   
 
@@ -102,7 +102,7 @@ include "session_admin.php";
                                   }
                                   else 
                                   {
-                                        $query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE no = '$no'";
+                                        $query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE nomor_register = '$no'";
                                         $sql = mysqli_query ($mysql, $query);
                                         while ($hasil = mysqli_fetch_array ($sql)) 
                                         {

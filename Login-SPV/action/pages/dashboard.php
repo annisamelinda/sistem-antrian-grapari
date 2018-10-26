@@ -107,11 +107,12 @@ include "session_admin.php";
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>NIK Petugas</th>
+                                        <th>No. Register</th>
                                         <th>ID Customer</th>
                                         <th>Tanggal Order</th>
                                         <th>Jam Order</th>
                                         <th>Layanan</th>
+                                        <th>Petugas</th>
                                         <th>Lihat Detail</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -120,20 +121,21 @@ include "session_admin.php";
 
 <?php  
 
-$queri_antrian="select * from riwayat_antrian" ; 
+$queri_antrian="SELECT nomor_register, tanggal_order, id_customer, jam_order, jenis_pelayanan, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK" ; 
 
 $hasil_antrian=mysqli_query($mysql, $queri_antrian);   
 
 while ($data = mysqli_fetch_array ($hasil_antrian))
 {
-$no = $data['no'];
+$no = $data['nomor_register'];
 echo "    
         <tr>
-        <td>".$data['NIK']."</td>
+        <td>".$data['nomor_register']."</td>
         <td>".$data['id_customer']."</td>
         <td>".$data['tanggal_order']."</td>
         <td>".$data['jam_order']."</td>
         <td>".$data['jenis_pelayanan']."</td>
+        <td>".$data['nama']."</td>
         <td><a href='detail_antrian.php?no=$no' target = '_blank'>Lihat Detail</a></td>
         <td><a href='delete_antrian.php?no=$no' onClick='return akun()'>Delete</a></td>
         </tr> 
