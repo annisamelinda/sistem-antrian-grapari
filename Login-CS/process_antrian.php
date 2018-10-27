@@ -14,6 +14,8 @@ ini_set('date.timezone', 'Asia/Jakarta');
 $waktu_akhir = date("H:i:s");
 $akhir  = strtotime($waktu_akhir);
 //$awal = strtotime($waktu_akhir);
+$session_NIK = $_SESSION['NIK'];
+
 
 if(isset($_GET["antrian"]) AND isset($_GET["no_loket"]))
 {
@@ -57,7 +59,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 		if(!empty($get_nomor_antrian_terbaru))
 
 		{
-				$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");		
+				$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', NIK='$session_NIK', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");		
 
 				$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses' where nomor_antrian = '$get_nomor_antrian_terbaru' ");
 
@@ -104,7 +106,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 			else
 			{
 
-					$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");
+					$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', NIK='$session_NIK', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");
 
 					echo '
 
