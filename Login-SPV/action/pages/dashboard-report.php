@@ -82,7 +82,7 @@ include "session_admin.php";
                             <a href="dashboard.php"><i class="fa fa-table fa-fw"></i> Data Antrian</a>
                         </li>
                         <li>
-                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-edit fa-fw"></i>Report</a>
+                            <a target="_blank" href="export.php"><i class="fa fa-edit fa-fw"></i>Report</a>
                         </li>
                     </ul>
                 </div>
@@ -94,92 +94,30 @@ include "session_admin.php";
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Selamat datang <b><?php echo $nama; ?></b>, sekarang kamu bisa kelola Antrian.</h1>
+                    <h1 class="page-header">REPORT</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                    <?php
-                                    $sql="SELECT nomor_register FROM riwayat_antrian";
-
-                                    if ($result=mysqli_query($mysql,$sql))
-                                      {
-                                      // Return the number of rows in result set
-                                      $rowcount=mysqli_num_rows($result);
-                                      echo $rowcount;
-                                      // Free result set
-                                      mysqli_free_result($result);
-                                      }
-                                    ?>                                        
-                                    </div>
-
-
-                                    <div>Total Antrian</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Tabel Pemesanan
+                            Silahkan pilih tanggal untuk melihat Report
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>No. Register</th>
-                                        <th>ID Customer</th>
-                                        <th>Tanggal Order</th>
-                                        <th>Jam Order</th>
-                                        <th>Layanan</th>
-                                        <th>Petugas</th>
-                                        <th>Lihat Detail</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-<?php  
-
-$queri_antrian="SELECT nomor_register, tanggal_order, id_customer, jam_order, jenis_pelayanan, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK" ; 
-
-$hasil_antrian=mysqli_query($mysql, $queri_antrian);   
-
-while ($data = mysqli_fetch_array ($hasil_antrian))
-{
-$no = $data['nomor_register'];
-echo "    
-        <tr>
-        <td>".$data['nomor_register']."</td>
-        <td>".$data['id_customer']."</td>
-        <td>".$data['tanggal_order']."</td>
-        <td>".$data['jam_order']."</td>
-        <td>".$data['jenis_pelayanan']."</td>
-        <td>".$data['nama']."</td>
-        <td><a href='detail_antrian.php?no=$no' target = '_blank'>Lihat Detail</a></td>
-        <td><a href='delete_antrian.php?no=$no' onClick='return akun()'>Delete</a></td>
-        </tr> 
-        ";     
-}
-mysqli_free_result($hasil_antrian);
-?>
-                                </tbody>
-                            </table>
-                            <!-- /.table-responsive -->
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" action="export.php" method="post">
+                                        <div class="form-group">
+                                            <label>Masukan tanggal antrian</label>
+                                            <input class="form-control" type="date" name="bday">
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -187,7 +125,7 @@ mysqli_free_result($hasil_antrian);
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
+            <!-- /.row -->
         </div>
 
     </div>
