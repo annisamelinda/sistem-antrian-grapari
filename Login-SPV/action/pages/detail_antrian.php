@@ -102,7 +102,10 @@ include "session_admin.php";
                                   }
                                   else 
                                   {
-                                        $query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE nomor_register = '$no'";
+                                        //$query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE nomor_register = '$no'";
+
+                                        $query = "SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_order, jam_selesai, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK where nomor_register = '$no'";
+
                                         $sql = mysqli_query ($mysql, $query);
                                         while ($hasil = mysqli_fetch_array ($sql)) 
                                         {
@@ -115,11 +118,13 @@ include "session_admin.php";
                                             $jam_order = $hasil['jam_order'];
                                             $jam_selesai = $hasil['jam_selesai'];
                                             $no_loket = $hasil['no_loket'];
-                                            $NIK = $hasil['NIK'];
+                                            $nama_petugas = $hasil['nama'];
 
                                             echo "                                
                                             <li class='list-group-item'>
                                             <i> - </i>Nomor Register : $no</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>No Loket : $no_loket</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Nomor Antrian : $nomor_antrian</li>
                                             <li class='list-group-item'>
@@ -127,15 +132,13 @@ include "session_admin.php";
                                             <li class='list-group-item'>
                                             <i> - </i></i>Tanggal Antrian : $tgl</li>
                                             <li class='list-group-item'>
-                                            <i> - </i></i>Petugas : $NIK</li>
+                                            <i> - </i></i>Petugas : $nama_petugas</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Status : $status_antrian</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Jam Order : $jam_order</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Jam Selesai : $jam_selesai</li>
-                                            <li class='list-group-item'>
-                                            <i> - </i></i>No Loket : $no_loket</li>
                                             ";
                                         }
 
