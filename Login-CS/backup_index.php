@@ -1,106 +1,46 @@
-
 <!DOCTYPE HTML>
-<html lang="zxx">
-
+<html>
 <head>
-	<title>LOGIN CS</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords" content="Validify Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
-	/>
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
-
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
-	<!-- Meta tag Keywords -->
-	<!-- css files -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<!-- Style-CSS -->
-	<link rel="stylesheet" href="css/fontawesome-all.css">
-	<!-- Font-Awesome-Icons-CSS -->
-	<!-- //css files -->
-	<!-- web-fonts -->
-	<link href="//fonts.googleapis.com/css?family=Nova+Round" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	<!-- //web-fonts -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
 </head>
-
 <body>
-	<!-- title -->
-	<h1>Selamat Datang Di Halaman Login Costumer Service GraPARI Tasikmalaya</h1>
-	<!-- //title -->
-	<!-- content -->
-	<div class="sub-main-w3">
-		<form id="demo" action="www.php" method="post">
-			<h2>Masukan NIK dan Password</h2>
-			<div class="form-group">
-				<input type="NIK" class="form-control textbox" name="NIK" placeholder="NIK" required="">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control textbox" name="password" placeholder="Password" required="">
-			</div>
-			<div class="form-group">
-			Pilih Loket
-			<?php
 
-			$con = mysqli_connect("localhost","root","","antrian_grapari");
+<p id="demo"></p>
 
-			$sql = "SELECT no_loket FROM loket where status_loket IS NULL";
-			$result = mysqli_query($con, $sql);
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2019 00:10:00").getTime();
 
-			echo "<select name='username'>";
-			while ($row = mysqli_fetch_array($result)) {
-			    echo "<option value='" . $row['no_loket'] ."'>" . $row['no_loket'] ."</option>";
-			}
-			echo "</select>";
-			?>
+// Update the count down every 1 second
+var x = setInterval(function() {
 
-			</div>
-				<input type="submit" name="submit">
-		</form>
-		<!-- //switch -->
-	</div>
-	<!-- //content -->
-
-	<!-- copyright -->
-	<div class="footer">
-		<p>&nbsp;</p>
-	</div>
-	<!-- //copyright -->
-
-	<!-- Jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<!-- //Jquery -->
-	<!-- validify plugin -->
-	<script src="js/validify.js"></script>
-	<script>
-		$("#demo").validify({
-			onSubmit: function (e, $this) {
-				$this.find('.alert').removeClass('hidden')
-			},
-			onFormSuccess: function (form) {
-				console.log("Form is valid now!")
-			},
-			onFormFail: function (form) {
-				console.log("Form is not valid :(")
-			}
-		});
-		$("#demo").validify({
-			errorStyle: "validifyError",
-			successStyle: "validifySuccess",
-			emailFieldName: "email",
-			emailCheck: true,
-			requiredAttr: "required",
-		});
-	</script>
-	<!-- //validify plugin -->
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now and the count down date
+    var distance = countDownDate;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
 
 </body>
-
 </html>

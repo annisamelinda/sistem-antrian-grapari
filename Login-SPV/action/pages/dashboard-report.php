@@ -108,11 +108,35 @@ include "session_admin.php";
                                 <div class="col-lg-6">
                                     <form role="form" action="export.php" method="post">
                                         <div class="form-group">
-                                            <label>Masukan tanggal antrian</label>
+                                            <label>Pilih berdasarkan tanggal harian</label>
                                             <input class="form-control" type="date" name="bday">
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                        <button type="submit" name="submit_daily" class="btn btn-default">Submit</button>
+                                        <button type="reset" class="btn btn-default">Reset</button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <form role="form" action="export.php" method="post">
+                                        <div class="form-group">
+                                            <label>Pilih berdasarkan Bulan</label>
+                                            <select class="form-control" name="month">
+                                                <option value="1">Januari</option>
+                                                <option value="2">Februari</option>
+                                                <option value="3">Maret</option>
+                                                <option value="4">April</option>
+                                                <option value="5">Mei</option>
+                                                <option value="6">Juni</option>
+                                                <option value="7">Juli</option>
+                                                <option value="8">Agustus</option>
+                                                <option value="9">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" name="submit_month" class="btn btn-default">Submit</button>
+                                        <button type="reset" class="btn btn-default">Reset</button>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

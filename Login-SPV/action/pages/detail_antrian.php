@@ -104,7 +104,7 @@ include "session_admin.php";
                                   {
                                         //$query = "SELECT nomor_register, nomor_antrian, jenis_pelayanan, tanggal_order, NIK, id_customer, status_antrian, jam_order, jam_selesai, no_loket FROM riwayat_antrian WHERE nomor_register = '$no'";
 
-                                        $query = "SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_order, jam_selesai, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK where nomor_register = '$no'";
+                                        $query = "SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_order, jam_diproses, jam_selesai, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK where nomor_register = '$no'";
 
                                         $sql = mysqli_query ($mysql, $query);
                                         while ($hasil = mysqli_fetch_array ($sql)) 
@@ -116,6 +116,7 @@ include "session_admin.php";
                                             $id_customer = $hasil['id_customer'];
                                             $status_antrian = $hasil['status_antrian'];
                                             $jam_order = $hasil['jam_order'];
+                                            $jam_diproses = $hasil['jam_diproses'];
                                             $jam_selesai = $hasil['jam_selesai'];
                                             $no_loket = $hasil['no_loket'];
                                             $nama_petugas = $hasil['nama'];
@@ -137,6 +138,8 @@ include "session_admin.php";
                                             <i> - </i></i>Status : $status_antrian</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Jam Order : $jam_order</li>
+                                            <li class='list-group-item'>
+                                            <i> - </i></i>Jam Diproses : $jam_diproses</li>
                                             <li class='list-group-item'>
                                             <i> - </i></i>Jam Selesai : $jam_selesai</li>
                                             ";
