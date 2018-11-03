@@ -1,3 +1,12 @@
+<?php
+        session_start();
+        if(isset($_SESSION['NIK']))
+        {
+                header("location: dashboard.php");
+        }
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

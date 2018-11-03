@@ -108,7 +108,7 @@ include "session_admin.php";
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">
                                     <?php
-                                    $sql="SELECT nomor_register FROM riwayat_antrian";
+                                    $sql="SELECT nomor_register, NIK FROM riwayat_antrian where NIK IS NOT NULL";
 
                                     if ($result=mysqli_query($mysql,$sql))
                                       {
