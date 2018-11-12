@@ -1,94 +1,74 @@
-<!DOCTYPE HTML>
-<html lang="zxx">
-
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>LOGIN SPV</title>
-	<!-- Meta tag Keywords -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8" />
-	<meta name="keywords" content="Validify Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
-	/>
-	<script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
+<title>Login SPV</title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Branded Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<!-- css files -->
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+<link rel="stylesheet" href="css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- online-fonts -->
+<link href="//fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script>
-	<!-- Meta tag Keywords -->
-	<!-- css files -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<!-- Style-CSS -->
-	<link rel="stylesheet" href="css/fontawesome-all.css">
-	<!-- Font-Awesome-Icons-CSS -->
-	<!-- //css files -->
-	<!-- web-fonts -->
-	<link href="//fonts.googleapis.com/css?family=Nova+Round" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	<!-- //web-fonts -->
+<!-- //online-fonts -->
+
 </head>
-
 <body>
-	<!-- title -->
-	<h1>Selamat Datang Di Halaman Login Supervisor GraPARI Tasikmalaya</h1>
-	<!-- //title -->
-	<!-- content -->
-	<div class="sub-main-w3">
-		<form id="demo" novalidate action="#" method="post">
-			<h2>Masukan NIK dan Password</h2>
-			<div class="form-group">
-				<input type="NIK" class="form-control textbox" name="NIK" placeholder="NIK" required="">
+<div class="w3-agile-banner">
+	<div class="center-container">
+		<!--header-->
+		<div class="header-w3l">
+			<h1>Halaman<span>&nbspAdmin</span></h1>
+		</div>
+		<!--//header-->
+		<!--main-->
+		<div class="main-content-agile">
+			<div class="wthree-pro">
+				<h2>Signin Now</h2>
 			</div>
-			<div class="form-group">
-				<input type="password" class="form-control textbox" name="password" placeholder="Password" required="">
+					<div class="w3-head-continue">
+						<h4>or use your username</h4>
+					</div>
+			<div class="sub-main-w3">	
+				<form action="../pages/login_process.php" method="post">
+					<input placeholder="Username" name="username" type="text" required=""><br>
+					<input  placeholder="Password" name="password" type="password" required="">
+					<div class="rem-w3">
+						<span class="check-w3"><input type="checkbox" />Remember Me</span>
+						<!--<a class="w3-pass" href="#">Forgot Password?</a>-->
+						<div class="clear"></div>
+					</div>
+					
+					<input type="submit" value="Signin" name="login">
+				</form>
 			</div>
-			<div class="form-group-2">
-				<button class="btn btn-default btn-osx btn-lg" disabled type="submit">
-					<i class="fas fa-long-arrow-alt-right"></i>
-					<form action="../pages/login_process.php" method="post">
-				</button>
-			</div>
-			<div class="alert alert-success hidden" role="alert">You Have Successfully Logged In</div>
-		</form>
-		<!-- //switch -->
+			<div class="w3-head-continue">
+						<h4>Not a member? <a href="#">signup</a></h4>
+					</div>
+		</div>
+		<!--//main-->
+		<!--footer-->
+		<div class="footer">
+			<p>&copy; 2017 Nandan Wedding. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+		</div>
+		<!--//footer-->
 	</div>
-	<!-- //content -->
-
-	<!-- copyright -->
-	<div class="footer">
-		<p>&nbsp;</p>
-	</div>
-	<!-- //copyright -->
-
-	<!-- Jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<!-- //Jquery -->
-	<!-- validify plugin -->
-	<script src="js/validify.js"></script>
-	<script>
-		$("#demo").validify({
-			onSubmit: function (e, $this) {
-				$this.find('.alert').removeClass('hidden')
-			},
-			onFormSuccess: function (form) {
-				console.log("Form is valid now!")
-			},
-			onFormFail: function (form) {
-				console.log("Form is not valid :(")
-			}
-		});
-		$("#demo").validify({
-			errorStyle: "validifyError",
-			successStyle: "validifySuccess",
-			emailFieldName: "email",
-			emailCheck: true,
-			requiredAttr: "required",
-		});
-	</script>
-	<!-- //validify plugin -->
-
+</div>
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
 </body>
-
 </html>
