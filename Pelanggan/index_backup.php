@@ -2,6 +2,7 @@
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,28 +21,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/-->
     <h1 class="agile_head text-center">FORM PENDAFTARAN PELAYANAN SIMCARD </h1>
     <div class="w3layouts_main wrap">
 	  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
-	    <form action="#" method="post" class="agile_form">
+	    <form action="process.php" method="post" class="agile_form">
 		  <h2>Jenis Pelayanan Simcard </h2>
 			 <ul class="agile_info_select">
-				 <li><input type="radio" name="view" id="excellent"> 
+				 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
 				 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
 				      <div class="check w3"></div>
 				 </li>
-				 <li><input type="radio" name="view" id="good" checked="checked"> 
+				 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good" checked="checked"> 
 					  <label for="good"> Deaktivasi Kartu Halo </label>
 				      <div class="check w3ls"></div>
 				 </li>
-				 <li><input type="radio" name="view" id="neutral"> 
+				 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral"> 
 					 <label for="neutral">Aktivasi Prabayar Baru </label>
 				     <div class="check wthree"></div>
 				 </li>
-			   <li><input type="radio" name="view" id="poor">
-				 </li>
 			 </ul>	  
 			<h2>Masukan Nama dan Nomor Handphone </h2>
-			<input type="text" placeholder="Nama" name="name" required="" />
-			<input type="number" placeholder="Nomor Handphone" name="number" required=""/>
-			<input type="submit" value="Daftar" class="agileinfo" />
+			<input type="text" placeholder="Nama" name="nama" required="" />
+			<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
+			<input type="submit" name="submit" value="Daftar" class="agileinfo" />
 	  </form>
 	</div>
 	<div class="agileits_copyright text-center">
@@ -49,4 +48,3 @@ License URL: http://creativecommons.org/licenses/by/3.0/-->
 	</div>
 </body>
 </html>
-

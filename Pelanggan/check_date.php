@@ -31,6 +31,7 @@ if($cek > 0)
 		if($reset_table)
 		{
 
+
 		}
 
 		else
@@ -44,12 +45,6 @@ if($cek > 0)
 		echo "Gagal";
 	}
 
-}
-
-else if ($cek == 0) 
-
-{
-	
 }
 
 else

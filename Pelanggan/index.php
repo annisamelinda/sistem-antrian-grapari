@@ -94,15 +94,15 @@ else
 			    <form action="process.php" method="post" class="agile_form">
 				  <h2>Jenis Pelayanan Simcard </h2>
 					 <ul class="agile_info_select">
-						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
+						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent" required> 
 						 	  <label for="excellent">Ganti Kartu (Kartu Hilang, Migrasi 4G atau Kartu Hilang) </label>
 						      <div class="check w3"></div>
 						 </li>
-						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good"> 
+						 <li><input type="radio" name="jenis_pelayanan" value="deaktivasi_kartu" id="good" required> 
 							  <label for="good"> Deaktivasi Kartu Halo </label>
 						      <div class="check w3ls"></div>
 						 </li>
-						 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral"> 
+						 <li><input type="radio" name="jenis_pelayanan" value="aktivasi_kartu" id="neutral" required> 
 							 <label for="neutral">Aktivasi Prabayar Baru </label>
 						     <div class="check wthree"></div>
 						 </li>
