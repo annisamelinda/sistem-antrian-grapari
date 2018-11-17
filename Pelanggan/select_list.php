@@ -1,13 +1,12 @@
-<?php
+<?php 
 
-$con = mysqli_connect("localhost","root","","antrian_grapari");
+error_reporting(0);
+ini_set('display_errors', 0);
 
-$sql = "SELECT no_loket FROM loket where status_loket IS NULL";
-$result = mysqli_query($con, $sql);
+require 'db.php';
 
-echo "<select name='username'>";
-while ($row = mysqli_fetch_array($result)) {
-    echo "<option value='" . $row['no_loket'] ."'>" . $row['no_loket'] ."</option>";
-}
-echo "</select>";
+$date = date('Y-m-d');
+
+echo $date;
+
 ?>

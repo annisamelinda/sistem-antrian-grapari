@@ -144,7 +144,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 
 	{
 
-			$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses', jam_diproses='$waktu_akhir'  where status_antrian ='menunggu' AND no_loket='$get_loket' limit 1 ");
+			$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses', jam_diproses='$waktu_akhir', NIK='$session_NIK' where status_antrian ='menunggu' AND no_loket='$get_loket' limit 1 ");
 
 			if($query_akhiran)
 			{

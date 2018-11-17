@@ -82,7 +82,10 @@ include "session_admin.php";
                             <a href="dashboard.php"><i class="fa fa-table fa-fw"></i> Data Antrian</a>
                         </li>
                         <li>
-                            <a target="_blank" href="export.php"><i class="fa fa-edit fa-fw"></i>Report</a>
+                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-edit fa-fw"></i>Report</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
                         </li>
                     </ul>
                 </div>

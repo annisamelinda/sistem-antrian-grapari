@@ -84,6 +84,9 @@ include "session_admin.php";
                         <li>
                             <a target="_blank" href="dashboard-report.php"><i class="fa fa-edit fa-fw"></i>Report</a>
                         </li>
+                        <li>
+                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -99,7 +102,7 @@ include "session_admin.php";
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -122,13 +125,44 @@ include "session_admin.php";
                                     </div>
 
 
-                                    <div>Total Antrian</div>
+                                    <div>Total Seluruh Antrian</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">
+                                    <?php
+                                    $sql="SELECT nomor_register, NIK FROM antrian where NIK IS NOT NULL";
+
+                                    if ($result=mysqli_query($mysql,$sql))
+                                      {
+                                      // Return the number of rows in result set
+                                      $rowcount=mysqli_num_rows($result);
+                                      echo $rowcount;
+                                      // Free result set
+                                      mysqli_free_result($result);
+                                      }
+                                    ?>                                        
+                                    </div>
+
+
+                                    <div>Total Antrian Hari ini</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -145,17 +179,18 @@ include "session_admin.php";
                                         <th>ID Customer</th>
                                         <th>Tanggal Order</th>
                                         <th>Jam Order</th>
+                                        <th>Jam Diproses</th>
                                         <th>Layanan</th>
                                         <th>Petugas</th>
                                         <th>Lihat Detail</th>
-                                        <th>Aksi</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
 
 <?php  
 
-$queri_antrian="SELECT nomor_register, tanggal_order, id_customer, jam_order, jenis_pelayanan, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK" ; 
+$queri_antrian="SELECT nomor_register, tanggal_order, id_customer, jam_order, jam_diproses, jenis_pelayanan, pl.NIK, nama FROM petugas pl JOIN antrian pn ON pl.NIK = pn.NIK" ; 
 
 $hasil_antrian=mysqli_query($mysql, $queri_antrian);   
 
@@ -168,10 +203,11 @@ echo "
         <td>".$data['id_customer']."</td>
         <td>".$data['tanggal_order']."</td>
         <td>".$data['jam_order']."</td>
+        <td>".$data['jam_diproses']."</td>
         <td>".$data['jenis_pelayanan']."</td>
         <td>".$data['nama']."</td>
         <td><a href='detail_antrian.php?no=$no' target = '_blank'>Lihat Detail</a></td>
-        <td><a href='delete_antrian.php?no=$no' onClick='return akun()'>Delete</a></td>
+        <!--<td><a href='delete_antrian.php?no=$no' onClick='return akun()'>Delete</a></td>-->
         </tr> 
         ";     
 }
