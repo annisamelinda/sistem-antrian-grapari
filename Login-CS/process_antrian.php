@@ -61,7 +61,7 @@ $time_duration = $jam .  ' jam, ' . floor( $menit / 60 ) . ' menit';
 		{
 				$query_nomor_sebelumnya = mysqli_query($con, "update antrian set status_antrian = 'selesai', jam_selesai='$waktu_akhir', NIK='$session_NIK', durasi='$time_duration' where status_antrian ='diproses' AND no_loket='$get_loket'");		
 
-				$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses' where nomor_antrian = '$get_nomor_antrian_terbaru' ");
+				$query_akhiran = mysqli_query($con, "update antrian set status_antrian = 'diproses', jam_diproses='$waktu_akhir' where nomor_antrian = '$get_nomor_antrian_terbaru' ");
 
 				if($query_akhiran)
 				{

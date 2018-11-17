@@ -18,6 +18,41 @@ require('check_date.php');
 <meta name="keywords" content="Elegant Feedback Form  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<script type="text/javascript">
+
+  function validasi_input(form){
+
+  var mincar = 10;
+  if (form.no_telp.value.length < mincar){
+    alert("No HP Minimal 10 Karater!");
+    form.no_telp.focus();
+    return (false);
+  }
+
+   return (true);
+
+  if (form.no_telp.value != ""){
+	  var x = (form.no_telp.value);
+	  var status = true;
+	  var list = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+	  for (i=0; i<=x.length-1; i++)
+	  {
+	  if (x[i] in list) cek = true;
+	  else cek = false;
+	 status = status && cek;
+	  }
+	  if (status == false)
+	  {
+	  alert("Telp harus angka!");
+	  form.no_telp.focus();
+	  return false;
+  }
+  }
+  return (true);
+
+  }
+</script>
 <!-- //custom-theme -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -54,7 +89,7 @@ if($weekendDay)
 		{
 		echo '
 			  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
-			    <form action="process.php" method="post" class="agile_form">
+			    <form action="process.php" method="post" class="agile_form" onsubmit="return validasi_input(this)">
 				  <h2>Jenis Pelayanan Simcard </h2>
 					 <ul class="agile_info_select">
 						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent"> 
@@ -72,7 +107,7 @@ if($weekendDay)
 					 </ul>	  
 					<h2>Masukan Nama dan Nomor Handphone </h2>
 					<input type="text" placeholder="Nama" name="nama" required="" />
-					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required="" minlength=10 />
 					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
 			  </form>
 		';
@@ -91,7 +126,7 @@ else
 		{
 		echo '
 			  <h3>Silahkan Isi Form Berikut Untuk Mendapatkan Nomor Antrian </h3>
-			    <form action="process.php" method="post" class="agile_form">
+			    <form action="process.php" method="post" class="agile_form" onsubmit="return validasi_input(this)">
 				  <h2>Jenis Pelayanan Simcard </h2>
 					 <ul class="agile_info_select">
 						 <li><input type="radio" name="jenis_pelayanan" value="ganti_kartu" id="excellent" required> 
@@ -109,7 +144,7 @@ else
 					 </ul>	  
 					<h2>Masukan Nama dan Nomor Handphone </h2>
 					<input type="text" placeholder="Nama" name="nama" required="" />
-					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""/>
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""  minlength=10 />
 					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
 			  </form>
 		';
