@@ -175,14 +175,14 @@ include "session_admin.php";
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>No. Register</th>
+                                        <th>Reg.Number</th>
                                         <th>ID Customer</th>
                                         <th>Tanggal Order</th>
                                         <th>Jam Order</th>
                                         <th>Jam Diproses</th>
                                         <th>Layanan</th>
                                         <th>Petugas</th>
-                                        <th>Lihat Detail</th>
+                                        <th>Detail</th>
 
                                     </tr>
                                     </thead>

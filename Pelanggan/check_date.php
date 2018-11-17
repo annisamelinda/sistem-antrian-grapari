@@ -49,7 +49,7 @@ if($cek > 0)
 
 else
 {
-	echo "Galat";
+
 }
 
 ?>
