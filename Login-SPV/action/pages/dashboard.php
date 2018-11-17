@@ -57,7 +57,7 @@ include "session_admin.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="tables.php">Halaman Administrasi Antrian</a>
+                <a class="navbar-brand" href="dashboard.php">Halaman Administrasi Antrian</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -85,7 +85,7 @@ include "session_admin.php";
                             <a target="_blank" href="dashboard-report.php"><i class="fa fa-edit fa-fw"></i>Report</a>
                         </li>
                         <li>
-                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
+                            <a target="_blank" href="analytic.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
                         </li>
                     </ul>
                 </div>
@@ -168,7 +168,7 @@ include "session_admin.php";
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Tabel Pemesanan
+                            Tabel Pemesanan Hari ini
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
