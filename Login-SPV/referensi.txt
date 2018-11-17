@@ -1,0 +1,3 @@
+https://educatecode.com/menampilkan-data-dengan-select-menggunakan-ajax/
+https://www.malasngoding.com/input-data-ke-database-tanpa-reload-dengan-ajax-jquery/
+http://suckittrees.com/artikel-237/cara-menampilkan-data-di-database-tanpa-refresh-dengan-ajax-dan-jquery.html
