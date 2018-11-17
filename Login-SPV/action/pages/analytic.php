@@ -56,7 +56,7 @@ include "session_admin.php";
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="tables.php">Halaman Administrasi Antrian</a>
+                <a class="navbar-brand" href="dashboard.php">Halaman Administrasi Antrian</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -84,7 +84,7 @@ include "session_admin.php";
                             <a target="_blank" href="dashboard-report.php"><i class="fa fa-edit fa-fw"></i>Report</a>
                         </li>
                         <li>
-                            <a target="_blank" href="dashboard-report.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
+                            <a target="_blank" href="analytic.php"><i class="fa fa-bar-chart-o fa-fw"></i>Analytic</a>
                         </li>
                     </ul>
                 </div>
@@ -96,14 +96,47 @@ include "session_admin.php";
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Chart</h1>
+                    <h1 class="page-header">Analytic</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Harian
+                            Harian :
+                            <?php
+                            
+                            ini_set('date.timezone', 'Asia/Jakarta');
+
+                            function tgl_indo($tanggal)
+                            {
+                                $bulan = array (
+                                    1 =>   'Januari',
+                                    'Februari',
+                                    'Maret',
+                                    'April',
+                                    'Mei',
+                                    'Juni',
+                                    'Juli',
+                                    'Agustus',
+                                    'September',
+                                    'Oktober',
+                                    'November',
+                                    'Desember'
+                                );
+                                $pecahkan = explode('-', $tanggal);
+                                
+                                // variabel pecahkan 0 = tanggal
+                                // variabel pecahkan 1 = bulan
+                                // variabel pecahkan 2 = tahun
+                             
+                                return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                            }
+                             
+                            echo tgl_indo(date('Y-m-d')); // menampilkan tanggal
+
+                            ?>
+
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -112,36 +145,44 @@ include "session_admin.php";
                                     <canvas id="myChartHarian"></canvas>
                                 </div>
                         <script>
+
+                            <?php 
+
+                            ini_set('date.timezone', 'Asia/Jakarta');
+
+                            $date_now = date("Y-m-d"); 
+
+                            ?> 
                             var ctx = document.getElementById("myChartHarian").getContext('2d');
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
                                     labels: ["L-1", "L-2", "L-3", "L-4", "L-5", "L-6"],
                                     datasets: [{
-                                        label: '',
+                                        label: 'L : Loket',
                                         data: [
                                         <?php 
-                                        $jumlah_loket_1 = mysqli_query($mysql,"select * from antrian where no_loket='1'");
+                                        $jumlah_loket_1 = mysqli_query($mysql,"select * from antrian where no_loket='1' AND tanggal_order = '$date_now' ");
                                         echo mysqli_num_rows($jumlah_loket_1);
                                         ?>, 
                                         <?php 
-                                        $jumlah_loket_2 = mysqli_query($mysql,"select * from antrian where no_loket='2'");
+                                        $jumlah_loket_2 = mysqli_query($mysql,"select * from antrian where no_loket='2' AND tanggal_order = '$date_now'");
                                         echo mysqli_num_rows($jumlah_loket_2);
                                         ?>, 
                                         <?php 
-                                        $jumlah_loket_3 = mysqli_query($mysql,"select * from antrian where no_loket='3'");
+                                        $jumlah_loket_3 = mysqli_query($mysql,"select * from antrian where no_loket='3' AND tanggal_order = '$date_now'");
                                         echo mysqli_num_rows($jumlah_loket_3);
                                         ?>, 
                                         <?php 
-                                        $jumlah_loket_4 = mysqli_query($mysql,"select * from antrian where no_loket='4'");
+                                        $jumlah_loket_4 = mysqli_query($mysql,"select * from antrian where no_loket='4' AND tanggal_order = '$date_now'");
                                         echo mysqli_num_rows($jumlah_loket_4);
                                         ?>, 
                                         <?php 
-                                        $jumlah_loket_5 = mysqli_query($mysql,"select * from antrian where no_loket='5'");
+                                        $jumlah_loket_5 = mysqli_query($mysql,"select * from antrian where no_loket='5' AND tanggal_order = '$date_now'");
                                         echo mysqli_num_rows($jumlah_loket_5);
                                         ?>, 
                                         <?php 
-                                        $jumlah_loket_6 = mysqli_query($mysql,"select * from antrian where no_loket='6'");
+                                        $jumlah_loket_6 = mysqli_query($mysql,"select * from antrian where no_loket='6' AND tanggal_order = '$date_now'");
                                         echo mysqli_num_rows($jumlah_loket_6);
                                         ?>
                                         ],
@@ -149,12 +190,14 @@ include "session_admin.php";
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',
                                         'rgba(255, 206, 86, 0.2)',
+                                        'rgba(253, 202, 46, 0.2)',
                                         'rgba(75, 192, 192, 0.2)'
                                         ],
                                         borderColor: [
                                         'rgba(255,99,132,1)',
                                         'rgba(54, 162, 235, 1)',
                                         'rgba(255, 206, 86, 1)',
+                                        'rgba(252, 156, 16, 1)',
                                         'rgba(75, 192, 192, 1)'
                                         ],
                                         borderWidth: 1
@@ -186,7 +229,21 @@ include "session_admin.php";
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Total
+                            Total Antrian Keseluruhan atau filter berdasarkan 
+                            <select>
+                              <option value="1">Januari</option>
+                              <option value="2">Februari</option>
+                              <option value="3">Maret</option>
+                              <option value="4">April</option>
+                              <option value="5">Mei</option>
+                              <option value="6">Juni</option>
+                              <option value="7">Julo</option>
+                              <option value="8">Agustus</option>
+                              <option value="9">September</option>
+                              <option value="10">Oktober</option>
+                              <option value="11">November</option>
+                              <option value="12">Desember</option>
+                            </select>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -201,7 +258,7 @@ include "session_admin.php";
                                 data: {
                                     labels: ["L-1", "L-2", "L-3", "L-4", "L-5", "L-6"],
                                     datasets: [{
-                                        label: '',
+                                        label: 'L : Loket',
                                         data: [
                                         <?php 
                                         $jumlah_loket_1 = mysqli_query($mysql,"select * from riwayat_antrian where no_loket='1'");
@@ -232,12 +289,14 @@ include "session_admin.php";
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',
                                         'rgba(255, 206, 86, 0.2)',
+                                        'rgba(178, 87, 46, 0.2)',
                                         'rgba(75, 192, 192, 0.2)'
                                         ],
                                         borderColor: [
                                         'rgba(255,99,132,1)',
                                         'rgba(54, 162, 235, 1)',
                                         'rgba(255, 206, 86, 1)',
+                                        'rgba(189, 156, 16, 1)',
                                         'rgba(75, 192, 192, 1)'
                                         ],
                                         borderWidth: 1
