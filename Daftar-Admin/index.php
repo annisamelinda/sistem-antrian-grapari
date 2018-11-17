@@ -16,6 +16,29 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+
+	<script type="text/javascript">
+	  function validasi_input(form){
+	  if (form.NIK.value != ""){
+	  var x = (form.NIK.value);
+	  var status = true;
+	  var list = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+	  for (i=0; i<=x.length-1; i++)
+	  {
+	  if (x[i] in list) cek = true;
+	  else cek = false;
+	 status = status && cek;
+	  }
+	  if (status == false)
+	  {
+	  alert("NIK harus angka!");
+	  form.NIK.focus();
+	  return false;
+	  }
+	  }
+	  return (true);
+	  }
+	  </script>
 	<!-- Meta tag Keywords -->
 	<!-- css file -->
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -34,7 +57,7 @@
 	<!-- //title -->
 	<!-- content -->
 	<div class="sub-main-w3">
-		<form validate="true" action="" method="post">
+		<form validate="true" action="" method="post" onsubmit="return validasi_input(this)">
 			<div class="form-group">
 				<label for="exampleInputText">Nama</label>
 				<input type="text" class="form-control" name="nama" id="exampleInputText" placeholder="Enter Name" required>
