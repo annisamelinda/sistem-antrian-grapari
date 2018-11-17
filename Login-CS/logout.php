@@ -17,6 +17,11 @@ header("location:index.php"); // Redirecting To Home Page
 session_start();
 
 	include 'db.php';
+
+	ini_set('date.timezone', 'Asia/Jakarta');
+
+	$time_set = date("Y-m-d H:i");
+
 	$session_NIK = $_SESSION['NIK'];
 	$nul = 'NULL';
 	$sql_view_loket="SELECT pl.NIK, nama, no_loket, access_time, status_loket FROM petugas pl JOIN pelayanan_loket pn ON pl.NIK = pn.NIK where pl.NIK ='$session_NIK'";
@@ -29,7 +34,7 @@ session_start();
 
 	$tag_loket = $row["no_loket"];
 
-	$null_loket="UPDATE pelayanan_loket SET status_loket = 0, NIK = NULL WHERE no_loket = '$tag_loket' AND NIK = '$session_NIK';";
+	$null_loket="UPDATE pelayanan_loket SET status_loket = 0, out_time ='$time_set', NIK = $session_NIK WHERE no_loket = '$tag_loket' AND NIK = '$session_NIK';";
 
 	$to_nol=mysqli_query($con,$null_loket); 
 
