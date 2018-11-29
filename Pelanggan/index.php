@@ -24,15 +24,23 @@ require('check_date.php');
   function validasi_input(form){
 
   var mincar = 10;
+  var maxcar = 12;
   if (form.no_telp.value.length < mincar){
     alert("No HP Minimal 10 Karater!");
     form.no_telp.focus();
     return (false);
   }
 
-   return (true);
+  else if (form.no_telp.value.length > maxcar){
+    alert("No HP Maksimal 12 Karater!");
+    form.no_telp.focus();
+    return (false);
+  }
 
-  if (form.no_telp.value != ""){
+   //return (true);
+
+/*  else if (form.no_telp.value != "")
+  {
 	  var x = (form.no_telp.value);
 	  var status = true;
 	  var list = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
@@ -47,9 +55,21 @@ require('check_date.php');
 	  alert("Telp harus angka!");
 	  form.no_telp.focus();
 	  return false;
+  	  }
   }
+*/
+
+  else if(form.no_telp.value < 0)
+  {
+    alert("Tidak boleh ada minus");
+    form.no_telp.focus();
+    return (false);
   }
-  return (true);
+
+  else
+  {
+  	  return (true);
+  }
 
   }
 </script>
@@ -107,7 +127,7 @@ if($weekendDay)
 					 </ul>	  
 					<h2>Masukan Nama dan Nomor Handphone </h2>
 					<input type="text" placeholder="Nama" name="nama" required="" />
-					<input type="number" placeholder="Nomor Handphone" name="no_telp" required="" minlength=10 />
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required="" minlength=10 minlength=12 />
 					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
 			  </form>
 		';
@@ -144,7 +164,7 @@ else
 					 </ul>	  
 					<h2>Masukan Nama dan Nomor Handphone </h2>
 					<input type="text" placeholder="Nama" name="nama" required="" />
-					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""  minlength=10 />
+					<input type="number" placeholder="Nomor Handphone" name="no_telp" required=""  minlength=10 maxlength=12 />
 					<input type="submit" name="submit" value="Daftar" class="agileinfo" />
 			  </form>
 		';
