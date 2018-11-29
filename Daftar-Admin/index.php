@@ -148,7 +148,7 @@ if(isset($_POST["submit"]))
 		}
 	}
 
-	elseif ($jabatan=='CS') 
+	else if ($jabatan=='CS') 
 	{
 
 
@@ -187,6 +187,40 @@ if(isset($_POST["submit"]))
 
 					';				
 		}
+	}
+
+	else if ($jabatan=='') 
+	{
+
+					echo '
+
+								<!DOCTYPE html>
+								<html>
+								<head>
+								<title>Tambah SPV/CS</title>
+								<link rel="stylesheet" type="text/css" href="plugins/sweetalert/sweetalert.css">
+								<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+								</head>
+								<body onload="sweet()">
+
+								  <script>
+								function sweet (){
+								swal({
+								  title: "Pilih jenis user terlebih dahulu",
+								  text: "Gagal :(",
+								  icon: "warning",
+								  button: "Ok!",
+								})
+								.then((value) => {
+								  window.location.href="index.php";
+								});
+								}
+								</script>
+								</body>
+								</html>
+
+					';				
 	}
 
 	else
