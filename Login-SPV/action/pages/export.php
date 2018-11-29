@@ -19,7 +19,7 @@ if(isset($_POST["submit_daily"]))
 		 
 		 {
 
-			$result = mysqli_query($mysql,"SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_diproses, jam_order, jam_selesai, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK WHERE tanggal_order = '$choosed_date' ORDER BY no ASC");
+			$result = mysqli_query($mysql,"SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_diproses, jam_order, jam_selesai, durasi, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK WHERE tanggal_order = '$choosed_date' ORDER BY no ASC");
 
 			!$result?die(mysqli_error()):'';
 
@@ -60,6 +60,7 @@ if(isset($_POST["submit_daily"]))
 			xlsWriteLabel($tablehead,$kolomhead++,"TANGGAL"); 
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM PESAN");             
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM DIPROSES");             
+			xlsWriteLabel($tablehead,$kolomhead++,"DURASI");
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM SELESAI");
 			xlsWriteLabel($tablehead,$kolomhead++,"ID CUSTOMER");
 			xlsWriteLabel($tablehead,$kolomhead++,"JENIS PELAYANAN");              
@@ -79,6 +80,7 @@ if(isset($_POST["submit_daily"]))
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_order']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_diproses']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_selesai']);
+			xlsWriteLabel($tablebody,$kolombody++,$data['durasi']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['id_customer']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jenis_pelayanan']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['status_antrian']);
@@ -115,7 +117,7 @@ if(isset($_POST["submit_daily"]))
 		 
 		 {
 
-			$result = mysqli_query($mysql,"SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_diproses, jam_order, jam_selesai, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK WHERE MONTH(tanggal_order)='$choosed_month' ORDER BY no ASC");
+			$result = mysqli_query($mysql,"SELECT nomor_register, nomor_antrian, tanggal_order, id_customer, jam_diproses, jam_order, jam_selesai, durasi, jenis_pelayanan, status_antrian, no_loket, pl.NIK, nama FROM petugas pl JOIN riwayat_antrian pn ON pl.NIK = pn.NIK WHERE MONTH(tanggal_order)='$choosed_month' ORDER BY no ASC");
 
 			!$result?die(mysqli_error()):'';
 
@@ -155,6 +157,7 @@ if(isset($_POST["submit_daily"]))
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM PESAN");             
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM DIPROSES");             
 			xlsWriteLabel($tablehead,$kolomhead++,"JAM SELESAI");
+			xlsWriteLabel($tablehead,$kolomhead++,"DURASI");
 			xlsWriteLabel($tablehead,$kolomhead++,"ID CUSTOMER");
 			xlsWriteLabel($tablehead,$kolomhead++,"JENIS PELAYANAN");              
 			xlsWriteLabel($tablehead,$kolomhead++,"STATUS");             
@@ -173,6 +176,7 @@ if(isset($_POST["submit_daily"]))
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_order']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_diproses']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jam_selesai']);
+			xlsWriteLabel($tablebody,$kolombody++,$data['durasi']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['id_customer']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['jenis_pelayanan']);
 			xlsWriteLabel($tablebody,$kolombody++,$data['status_antrian']);
